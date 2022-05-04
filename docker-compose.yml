@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  testexpo:
+  expoproject:
     image: ReactExpoDocker:latest
     build:
       dockerfile: Dockerfile
