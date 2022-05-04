@@ -1,0 +1,9 @@
+{
+    "name": "expo-project",
+    "dockerComposeFile": "../docker-compose.yml",
+    "service": "expoproject",
+    "workspaceFolder": "/home/dev/src/expoproject",
+    "extensions": [
+       "esbenp.prettier-vscode"
+    ]
+ }
