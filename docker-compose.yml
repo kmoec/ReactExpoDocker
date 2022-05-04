@@ -2,29 +2,31 @@ version: '3.8'
 
 services:
   expoproject:
-    image: ReactExpoDocker:latest
+    image: react_expo_docker:latest
     build:
       dockerfile: Dockerfile
       # Dockerfile is in the same directory as the docker-compose.yml
       context: .
     extra_hosts:
       - "devserver:10.0.0.2"
+    env_file:
+      - ./.env
     # Repos address such as github.com/kmoec/Whatsup.git
     # Repo's owner username = kmoec from kmoec/ReactExpoDocker when ReactExpoDocker is the Repo's username
     # and kmoec is the username of the Repo's owner
     # So if you want to clone Wahtsup.get from kmoec user
     # you need to provide this string
     # --gitRepo github.com/kmoec/Whatsup.git --pat kmoec
-    command: "--gitRepo <Repo address> --pat <Repo's owner username>"
+    command: "--gitRepo your_git_repo_address --pat git_user_name"
     ports:
       - "19000:19000"
       - "19001:19001"
       - "19002:19002"
     # Map the VOLUME_ID diretory to /home/node/src inside the container
     volumes:
-      - ${VOLUME_ID:myexpo}:/home/node/src
+      - ${VOLUME_ID:-myexpo}:/home/node/src
 # Creates a directory with value set in VOLUME_ID. This VOLUME_ID is set in .env file
 # If VOLUME_ID is not set, myexpo will be used as a directory name
 volumes:
   expoproject:
-    name: ${VOLUME_ID:myexpo}
+    name: ${VOLUME_ID:-myexpo}
