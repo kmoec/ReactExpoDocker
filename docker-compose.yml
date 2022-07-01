@@ -14,7 +14,7 @@ services:
     # Repos address such as github.com/kmoec/Whatsup.git
     # Repo's owner username = kmoec from kmoec/ReactExpoDocker when ReactExpoDocker is the Repo's username
     # and kmoec is the username of the Repo's owner
-    # So if you want to clone Wahtsup.get from kmoec user
+    # So if you want to clone Whatsup.get from kmoec user
     # you need to provide this string
     # --gitRepo github.com/kmoec/Whatsup.git --pat kmoec
     #command: "--gitRepo github.com/kmoec/expo-playground.git --pat kmoec"
@@ -22,12 +22,8 @@ services:
       - "19000:19000"
       - "19001:19001"
       - "19002:19002"
-    # Map the VOLUME_ID diretory to /home/node/src inside the container
+    # We are using bind-mount here since we would like to use SourceTree to manage our local repo
+    # Requires volumes/source paht exists in where the docker-compose reside
+    # Inside the the path, you will need to clone your git repos
     volumes:
-      #- src:/home/node/test
       - ./volumes/source:/home/dev/src
-# Creates a directory with value set in VOLUME_ID. This VOLUME_ID is set in .env file
-# If VOLUME_ID is not set, myexpo will be used as a directory name
-#volumes:
-#  src:
-    
