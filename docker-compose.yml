@@ -17,16 +17,17 @@ services:
     # So if you want to clone Wahtsup.get from kmoec user
     # you need to provide this string
     # --gitRepo github.com/kmoec/Whatsup.git --pat kmoec
-    command: "--gitRepo your_git_repo_address --pat git_user_name"
+    #command: "--gitRepo github.com/kmoec/expo-playground.git --pat kmoec"
     ports:
       - "19000:19000"
       - "19001:19001"
       - "19002:19002"
     # Map the VOLUME_ID diretory to /home/node/src inside the container
     volumes:
-      - ${VOLUME_ID:-myexpo}:/home/node/src
+      #- src:/home/node/test
+      - ./volumes/source:/home/dev/src
 # Creates a directory with value set in VOLUME_ID. This VOLUME_ID is set in .env file
 # If VOLUME_ID is not set, myexpo will be used as a directory name
-volumes:
-  expoproject:
-    name: ${VOLUME_ID:-myexpo}
+#volumes:
+#  src:
+    
