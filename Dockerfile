@@ -1,4 +1,4 @@
-FROM node:17.9.0-buster-slim
+FROM node:16.15.1-buster-slim
 LABEL version=1.0.0
 
 ENV USERNAME dev
@@ -24,11 +24,11 @@ RUN chmod +x /get-source.sh
 # is created and used here
 USER $USERNAME
 
-# set the npm global location for dev user
+# set the npm global location for dev user. 
 ENV NPM_CONFIG_PREFIX="/home/$USERNAME/.npm-global"
 
-# install expo-cli from npm package 
-RUN mkdir -p ~/src && mkdir ~/.npm-global && npm install expo-cli --global
+# install expo-cli from npm package. @expo/ngrok@4.1.0  is necessary for tunnel access
+RUN mkdir -p ~/src && mkdir ~/.npm-global && npm install expo-cli --global && npm install @expo/ngrok@4.1.0 --global
 
 # append the .npm-global to path, other wise globally installed packages
 # will not be available in bash
