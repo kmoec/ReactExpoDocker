@@ -13,7 +13,7 @@ These are the steps you need to take to adapt image for your expo project
   - /home/dev/src/your_project_name
 - Open docker-compose.yml file
   - line 29 with the directory name you mounting from your local machine
-- Once you get your container up and running, just do "nix create-expo-app <your project name>" in home/dev/src" to initialize your project
+- Once you get your container up and running, just do "npx create-expo-app <your project name>" in home/dev/src" to initialize your project
 
 Note
 -----
